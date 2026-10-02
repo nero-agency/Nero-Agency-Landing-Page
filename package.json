@@ -1,0 +1,17 @@
+{
+  "name": "Nero Agency",
+  "version": "1.0.0",
+  "description": "Professional landing page",
+  "scripts": {
+    "dev": "live-server public",
+    "build": "npm run minify",
+    "minify": "echo 'Add your build tool here'"
+  },
+  "keywords": [],
+  "author": "Bernardo",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
+

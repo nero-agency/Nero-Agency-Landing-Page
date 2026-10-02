@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0a1220">
+    <meta property="og:title" content="NERO agency">
+    <meta property="og:description"
+        content="Websites à medida para negócios que querem crescer em Portugal. Conversão, performance e design premium.">
+    <meta property="og:image" content="/public/images/social/og-image.png">
+    <!--<meta property="og:url" content="https://seu-dominio.com"> -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Nero Agency</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <style>
+        :root {
+            --bg: #0a1220;
+            --navy: #0f1b2e;
+            --line: rgba(232, 244, 248, .13);
+            --ice: #e8f4f8;
+            --mut: rgba(232, 244, 248, .64);
+            --coral: #ff6b4a;
+            --serif: "Instrument Serif", Cambria, Georgia, serif;
+            --sans: Inter, Calibri, system-ui, sans-serif;
+            --pad: clamp(1.25rem, 5vw, 4rem);
+            --ease: cubic-bezier(.22, 1, .36, 1);
+            box-sizing: border-box;
+            color-scheme: dark;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            background: var(--bg);
+            scroll-padding-top: env(safe-area-inset-top, 0px)
+        }
+
+        html.lenis,
+        html.lenis body {
+            height: auto
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ice);
+            font: 400 1.0625rem/1.65 var(--sans);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        p {
+            color: var(--mut);
+            max-width: 46ch
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            line-height: 1.02;
+            letter-spacing: -.02em
+        }
+
+        h2 {
+            font-size: clamp(2.4rem, 6.2vw, 5.4rem);
+            max-width: 16ch
+        }
+
+        h3 {
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            line-height: 1.1
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--coral);
+            outline-offset: 4px
+        }
+
+        section {
+            position: relative;
+            padding: clamp(6rem, 14vw, 12rem) var(--pad)
+        }
+
+        .w {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+            padding: 0 .06em .12em;
+            margin: 0 -.06em -.12em
+        }
+
+        .w>span {
+            display: inline-block;
+            will-change: transform
+        }
+
+        .ul {
+            position: relative
+        }
+
+        .ul::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s var(--ease)
+        }
+
+        .ul:hover::after {
+            transform: scaleX(1);
+            transform-origin: left
+        }
+
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            padding: .9rem 1.6rem;
+            border: 1px solid var(--line);
+            border-radius: 99px;
+            font-weight: 500;
+            font-size: .95rem;
+            overflow: hidden;
+            isolation: isolate;
+            transition: color .45s var(--ease), border-color .45s
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: var(--coral);
+            transform: translateY(101%);
+            transition: transform .5s var(--ease)
+        }
+
+        .btn:hover {
+            color: var(--bg);
+            border-color: var(--coral)
+        }
+
+        .btn:hover::before {
+            transform: none
+        }
+
+        .btn.fill {
+            background: var(--coral);
+            color: var(--bg);
+            border-color: var(--coral)
+        }
+
+        .btn.fill::before {
+            background: var(--ice)
+        }
+
+        .btn.fill:hover {
+            border-color: var(--ice)
+        }
+
+        /* cursor */
+        .cur {
+            display: none
+        }
+
+        @media (hover:hover) and (pointer:fine) {
+
+            body.cc,
+            body.cc * {
+                cursor: none !important
+            }
+
+            .cur {
+                display: block;
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: 999;
+                pointer-events: none
+            }
+
+            .cur-dot {
+                width: 6px;
+                height: 6px;
+                margin: -3px;
+                border-radius: 50%;
+                background: var(--coral)
+            }
+
+            .cur-ring {
+                width: 34px;
+                height: 34px;
+                margin: -17px;
+                border: 1px solid rgba(232, 244, 248, .5);
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                font: 500 .72rem var(--sans);
+                color: var(--bg);
+                transition: width .35s var(--ease), height .35s var(--ease), margin .35s var(--ease), background .3s, border-color .3s
+            }
+
+            .cur-ring span {
+                opacity: 0;
+                transition: opacity .2s
+            }
+
+            .cur-ring.link {
+                width: 56px;
+                height: 56px;
+                margin: -28px;
+                border-color: var(--coral)
+            }
+
+            .cur-ring.view {
+                width: 84px;
+                height: 84px;
+                margin: -42px;
+                background: var(--coral);
+                border-color: var(--coral)
+            }
+
+            .cur-ring.view span {
+                opacity: 1
+            }
+
+            .cur-dot {
+                transition: opacity .2s
+            }
+
+            .cur-ring.view~.cur-dot {
+                opacity: 0
+            }
+        }
+
+        /* loader + nav */
+        #ld {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: var(--bg);
+            display: grid;
+            place-items: center
+        }
+
+        #ld i {
+            display: block;
+            width: min(240px, 50vw);
+            height: 1px;
+            background: var(--coral);
+            transform: scaleX(0);
+            transform-origin: left
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(1.1rem + env(safe-area-inset-top, 0px)) var(--pad) 1.1rem;
+            background: linear-gradient(var(--bg), transparent)
+        }
+
+        .logo {
+            font: italic 1.7rem var(--serif)
+        }
+
+        .logo b {
+            color: var(--coral);
+            font-style: normal
+        }
+
+        .logo.nero {
+            font: 400 1.55rem var(--serif);
+            letter-spacing: .14em
+        }
+
+        .nl {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-size: .92rem
+        }
+
+        /* hero */
+        .hero {
+            height: 260vh;
+            padding: 0
+        }
+
+        .stage {
+            position: sticky;
+            top: 0;
+            height: 100svh;
+            overflow: hidden
+        }
+
+        .atm {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(120% 90% at 50% 100%, #1a2a4a, var(--bg))
+        }
+
+        .atm i {
+            position: absolute;
+            width: 70vmax;
+            height: 70vmax;
+            border-radius: 50%;
+            left: -10vmax;
+            top: -10vmax;
+            background: radial-gradient(closest-side, rgba(255, 107, 74, .8), transparent);
+            animation: dr 28s ease-in-out infinite alternate;
+            will-change: transform
+        }
+
+        .atm i+i {
+            left: auto;
+            top: auto;
+            right: -15vmax;
+            bottom: -20vmax;
+            background: radial-gradient(closest-side, rgba(232, 244, 248, .5), transparent);
+            animation-duration: 34s;
+            animation-direction: alternate-reverse
+        }
+
+        @keyframes dr {
+            to {
+                transform: translate3d(18vmax, 10vmax, 0)
+            }
+        }
+
+        .mask {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1
+        }
+
+        .mask text {
+            font: 400 360px var(--serif);
+            letter-spacing: -.02em
+        }
+
+        .mask #ag {
+            font: 500 26px var(--sans);
+            letter-spacing: .32em
+        }
+
+        .ring {
+            position: absolute;
+            z-index: 2;
+            right: 8vw;
+            top: 17vh;
+            width: clamp(80px, 12vw, 170px);
+            opacity: .55;
+            animation: spin 70s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .hcopy {
+            position: absolute;
+            z-index: 3;
+            left: var(--pad);
+            right: var(--pad);
+            bottom: clamp(1.25rem, 6vh, 3.5rem);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 2rem;
+            flex-wrap: wrap
+        }
+
+        .hcopy h1 {
+            font-size: clamp(2.1rem, 4.6vw, 4rem);
+            max-width: 13ch
+        }
+
+        .hr {
+            display: grid;
+            gap: 1.25rem;
+            max-width: 380px
+        }
+
+        .btns {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap
+        }
+
+        .sfade {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            background: var(--bg);
+            opacity: 0;
+            pointer-events: none
+        }
+
+        /* main */
+        main {
+            position: relative;
+            z-index: 2;
+            background: var(--bg);
+            border-radius: 0 0 clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem)
+        }
+
+        .intro {
+            padding-top: clamp(3rem, 8vw, 7rem)
+        }
+
+        .intro h2 {
+            max-width: 20ch
+        }
+
+        .intro p {
+            margin-top: 2.5rem
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+            gap: 1.5rem;
+            margin-top: 4.5rem
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: auto;
+            padding: 1.75rem 0 0;
+            border-top: 1px solid var(--line);
+            transition: border-color .5s, transform .6s var(--ease)
+        }
+
+        .card:hover {
+            border-color: var(--coral);
+            transform: translateY(-6px)
+        }
+
+        .card .pr {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            font-size: .9rem;
+            color: var(--ice)
+        }
+
+        .phead {
+            margin-bottom: 5rem
+        }
+
+        .stack {
+            padding-bottom: 6vh
+        }
+
+        .sc {
+            position: sticky;
+            top: calc(13vh + var(--i)*1.6rem);
+            margin-bottom: 12vh;
+            min-height: 52vh;
+            padding: clamp(1.5rem, 4vw, 3.5rem);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            background: var(--c);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(1rem, 4vw, 4rem);
+            align-items: end;
+            transform-origin: 50% 0
+        }
+
+        .sc:last-child {
+            margin-bottom: 0
+        }
+
+        .sc .big {
+            font: italic clamp(4rem, 12vw, 10rem)/.8 var(--serif);
+            color: var(--coral)
+        }
+
+        .sc p {
+            margin-top: 1rem
+        }
+
+        .note {
+            margin-top: 2rem
+        }
+
+        .pf {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4.5rem 1.5rem;
+            margin-top: 5rem
+        }
+
+        .pj {
+            grid-column: span 6;
+            display: block
+        }
+
+        .pj:nth-child(2) {
+            grid-column: 7/13;
+            margin-top: 8vw
+        }
+
+        .pj:nth-child(3) {
+            grid-column: 3/9
+        }
+
+        .im {
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: 6px;
+            overflow: hidden
+        }
+
+        .art {
+            position: absolute;
+            inset: 0
+        }
+
+        .art i {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 72% 28%, var(--a), transparent 58%), linear-gradient(135deg, var(--b), var(--bg));
+            transition: transform 1.2s var(--ease)
+        }
+
+        .pj:hover .art i {
+            transform: scale(1.07)
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.25rem;
+            align-items: baseline;
+            flex-wrap: wrap
+        }
+
+        .meta span {
+            color: var(--mut);
+            font-size: .9rem
+        }
+
+        .mqs {
+            padding: clamp(3rem, 8vw, 6rem) 0
+        }
+
+        .mq {
+            overflow: hidden;
+            border-block: 1px solid var(--line);
+            padding: 1.5rem 0;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)
+        }
+
+        .mt {
+            display: flex;
+            width: max-content;
+            animation: mq 45s linear infinite;
+            will-change: transform
+        }
+
+        .mt span {
+            font: italic clamp(2.5rem, 7vw, 6rem)/1.1 var(--serif);
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(232, 244, 248, .4);
+            padding-right: 3rem;
+            display: flex;
+            align-items: center;
+            transition: color .5s
+        }
+
+        .mt span:hover {
+            color: var(--ice)
+        }
+
+        .mt span::after {
+            content: "";
+            width: .45rem;
+            height: .45rem;
+            border-radius: 50%;
+            background: var(--coral);
+            margin-left: 3rem
+        }
+
+        @keyframes mq {
+            to {
+                transform: translate3d(-50%, 0, 0)
+            }
+        }
+
+        .cta {
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2.5rem
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 75%;
+            background: radial-gradient(60% 80% at 50% 100%, rgba(255, 107, 74, .16), transparent);
+            pointer-events: none
+        }
+
+        .cta>* {
+            position: relative
+        }
+
+        .ring2 {
+            position: absolute !important;
+            right: -12vw;
+            top: 50%;
+            width: min(62vw, 640px);
+            margin-top: calc(min(62vw, 640px)/-2);
+            opacity: .35;
+            pointer-events: none
+        }
+
+        /* footer curtain */
+        footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            background: var(--navy);
+            padding: clamp(3rem, 8vw, 6rem) var(--pad) calc(2rem + env(safe-area-inset-bottom, 0px))
+        }
+
+        .fg {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem
+        }
+
+        .fg a {
+            display: block;
+            width: fit-content;
+            margin-bottom: .6rem
+        }
+
+        .fg h4 {
+            font: 500 .85rem var(--sans);
+            color: var(--mut);
+            margin-bottom: 1rem
+        }
+
+        .fg p {
+            margin-top: 1rem
+        }
+
+        .fb {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+            font-size: .9rem;
+            color: var(--mut)
+        }
+
+        .rm .hero {
+            height: 100svh
+        }
+
+        .rm .mask,
+        .rm .sfade,
+        #ld.off {
+            display: none
+        }
+
+        .rm .atm {
+            opacity: .4
+        }
+
+        .rm .sc {
+            position: relative;
+            top: 0
+        }
+
+        .rm .mt,
+        .rm .atm i,
+        .rm .ring {
+            animation: none
+        }
+
+        @media (max-width:760px) {
+            .hero {
+                height: 200vh
+            }
+
+            .nl .ul {
+                display: none
+            }
+
+            .hcopy h1 {
+                max-width: none
+            }
+
+            .sc {
+                grid-template-columns: 1fr;
+                top: calc(11vh + var(--i)*1.2rem);
+                min-height: 46vh
+            }
+
+            .pj,
+            .pj:nth-child(n) {
+                grid-column: 1/-1;
+                margin-top: 0
+            }
+
+            .fg {
+                grid-template-columns: 1fr;
+                gap: 2rem
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .atm i,
+            .ring,
+            .mt {
+                animation: none
+            }
+        }
+
+        .art img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s var(--ease)
+        }
+
+        .art i {
+            opacity: .35
+        }
+
+        .pj:hover .art img {
+            transform: scale(1.07)
+        }
+
+        /* scroll indicator (bolinhas) */
+        .scroll-nav{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:1rem;opacity:0;transition:opacity .6s ease}
+        .scroll-nav.show{opacity:1}
+        .scroll-nav button{width:8px;height:8px;border:1.5px solid rgba(232,244,248,.3);border-radius:50%;background:transparent;cursor:pointer;transition:all .3s}
+        .scroll-nav button.active{background:var(--coral);border-color:var(--coral)}
+        .scroll-nav button:hover{border-color:rgba(232,244,248,.7)}
+        @media(max-width:960px){.scroll-nav{display:none}}
+    </style>
+</head>
+
+<body>
+    <div class="scroll-nav" id="scrollNav"></div>
+    <div id="ld"><i></i></div>
+    <div class="cur cur-ring"><span>Ver</span></div>
+    <div class="cur cur-dot"></div>
+    <nav><a class="logo nero" href="#top">NERO</a>
+        <div class="nl"><a class="ul" href="#servicos">Serviços</a><a class="ul" href="#processo">Processo</a><a
+                class="ul" href="#trabalho">Trabalho</a><a class="btn" href="#contacto">Contacto</a></div>
+    </nav>
+    <main>
+        <header class="hero" id="top">
+            <div class="stage">
+                <div class="atm"><i></i><i></i></div>
+                <svg class="mask" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <defs>
+                        <mask id="mk">
+                            <rect x="-3000" y="-3000" width="7000" height="7000" fill="#fff" />
+                            <g id="mt" fill="#000"><text id="nm" x="500" y="396" text-anchor="middle">NERO</text><text
+                                    id="ag" x="500" y="440" text-anchor="middle">agency</text></g>
+                        </mask>
+                    </defs>
+                    <rect x="-3000" y="-3000" width="7000" height="7000" fill="#0a1220" mask="url(#mk)" />
+                </svg>
+                <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="#ff6b4a" stroke-width=".6"
+                        stroke-dasharray="1.5 3" />
+                    <circle cx="50" cy="2" r="2" fill="#ff6b4a" />
+                </svg>
+                <div class="hcopy">
+                    <h1>Sites que convertem visitantes em clientes.</h1>
+                    <div class="hr">
+                        <p>Web design à medida para estúdios de fitness e clínicas. Rápido, mensurável e sem templates.
+                        </p>
+                        <div class="btns"><a class="btn fill" href="#contacto">Agendar discovery call</a><a class="btn"
+                                href="#trabalho">Ver trabalho</a></div>
+                    </div>
+                </div>
+                <div class="sfade"></div>
+            </div>
+        </header>
+
+        <section class="intro">
+            <h2 data-split>Websites com intenção em cada pormenor, para negócios que querem crescer.</h2>
+            <p data-fade>Começamos por perceber o seu negócio. Só depois desenhamos, à medida, a solução que faz
+                sentido.</p>
+        </section>
+
+        <section id="servicos">
+            <h2 data-split>Três planos, um objetivo: mais clientes.</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Arranque</h3>
+                    <p>Uma landing page pensada para uma ação: marcar a aula experimental. Para estúdios novos, sempresença online.</p>
+                    <!-- <span class="pr">Desde 450€ + 39€/mês</span> -->
+                </article>
+                <article class="card">
+                    <h3>Presença</h3>
+                    <p>Website institucional multipágina, com gestão de conteúdos simples para publicar sozinho e serencontrado no Google.</p>
+                    <!-- <span class="pr">Desde 1.200€ + 79€/mês</span> -->
+                </article>
+                <article class="card">
+                    <h3>Gestão Total</h3>
+                    <p>Web app com área de membro, marcações com lista de espera e lembretes automáticos para reduzir faltas.</p>
+                    <!-- <span class="pr">Desde 3.000€ + 199€/mês</span> -->
+                </article>
+            </div>
+        </section>
+
+        <section id="processo">
+            <div class="phead">
+                <h2 data-split>Do primeiro contacto ao lançamento.</h2>
+            </div>
+            <div class="stack">
+                <article class="sc" style="--i:0;--c:#0f1b2e"><span class="big">01</span>
+                    <div>
+                        <h3>Discovery</h3>
+                        <p>Uma videochamada para mapear objetivos, clientes e dores operacionais. Só depois propomos uma
+                            solução.</p>
+                    </div>
+                </article>
+                <article class="sc" style="--i:1;--c:#13233c"><span class="big">02</span>
+                    <div>
+                        <h3>Proposta</h3>
+                        <p>O plano e o âmbito certos para o seu caso, com preço e prazos claros antes de começarmos.</p>
+                    </div>
+                </article>
+                <article class="sc" style="--i:2;--c:#182b49"><span class="big">03</span>
+                    <div>
+                        <h3>Design e desenvolvimento</h3>
+                        <p>Construção à medida, com foco em velocidade, mobile e conversão. Acompanha cada passo.</p>
+                    </div>
+                </article>
+                <article class="sc" style="--i:3;--c:#1d3254"><span class="big">04</span>
+                    <div>
+                        <h3>Lançamento e evolução</h3>
+                        <p>Publicamos, medimos e melhoramos de forma contínua, com suporte sempre disponível.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="trabalho">
+            <h2 data-split>Trabalho selecionado.</h2>
+            <p class="note" data-fade>Conceitos que mostram o método. Os primeiros casos de estudo reais entram aqui.
+            </p>
+            <div class="pf">
+                <a class="pj" href="#contacto" data-cursor="Ver" style="--a:#e8f4f8;--b:#13233c">
+                    <div class="im">
+                        <div class="art">
+                            <img src="images/plano-1-arranque.webp" alt="Landing page estúdio de fitness" loading="lazy"
+                                width="1200" height="900">
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <h3>Estúdio de fitness</h3>
+                        <span>Landing page, plano Arranque</span>
+                    </div>
+                </a>
+                <a class="pj" href="#contacto" data-cursor="Ver" style="--a:#ff6b4a;--b:#1a2a4a">
+                    <div class="im">
+                        <div class="art">
+                            <img src="images/plano-2-presenca.webp" alt="Landing page estúdio de fitness" loading="lazy"
+                                width="1200" height="900">
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <h3>Clínica dentária</h3>
+                        <span>Website, plano Presença</span>
+                    </div>
+                </a>
+                <a class="pj" href="#contacto" data-cursor="Ver" style="--a:#e8f4f8;--b:#13233c">
+                    <div class="im">
+                        <div class="art">
+                            <img src="images/plano-3-gestao-total.webp" alt="Landing page estúdio de fitness"
+                                loading="lazy" width="1200" height="900">
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <h3>Ginásio com app de membros</h3>
+                        <span>Web app, plano Gestão Total</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <div class="mqs">
+            <div class="mq" aria-hidden="true">
+                <div class="mt"><span>Estúdios de fitness</span><span>Clínicas</span><span>Landing pages</span><span>Web
+                        apps</span><span>Design à medida</span><span>Performance</span><span>SEO</span></div>
+            </div>
+        </div>
+
+        <section class="cta" id="contacto"><svg class="ring2" viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="49" fill="none" stroke="#ff6b4a" stroke-width=".25" />
+                <circle cx="50" cy="50" r="36" fill="none" stroke="#e8f4f8" stroke-width=".2" stroke-dasharray="1 2" />
+                <circle cx="50" cy="1" r="1.2" fill="#ff6b4a" />
+            </svg>
+            <h2 data-split>Vamos conversar sobre o seu projeto?</h2>
+            <p data-fade>Uma videochamada de discovery, sem compromisso. Mapeamos o seu contexto antes de propor seja o
+                que for.</p><a class="btn fill" href="mailto:ola@agencia.pt">Marcar discovery call</a>
+        </section>
+    </main>
+    <div id="sp"></div>
+    <footer id="ft">
+        <div class="fi">
+            <div class="fg">
+                <div>
+                    <!-- <a class="logo" href="#top">agência <b>.</b></a> -->
+                    <a class="logo nero"href="#top">NERO</a>
+                    <p>Web design à medida de negócios que querem crescer em Portugal.</p>
+                </div>
+                <div>
+                    <h4>Navegar</h4><a class="ul" href="#servicos">Serviços</a><a class="ul"
+                        href="#processo">Processo</a><a class="ul" href="#trabalho">Trabalho</a>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <a class="ul"
+                        href="mailto:nero.agency.info@gmail.com">nero.agency.info@gmail.com</a>
+                    <!-- <a class="ul"href="#">LinkedIn</a> -->
+                    <a class="ul" 
+                        href="https://www.instagram.com/nero.agency_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </div>
+            <div class="fb"><span>© 2026 Portugal</span><a class="ul" href="#top">Voltar ao topo</a></div>
+        </div>
+    </footer>
+
+    <!-- Script da scroll das bolinhas-->
+    <script>
+    const sections = document.querySelectorAll('section, header');
+    const scrollNav = document.getElementById('scrollNav');
+    const heroHeight = sections[0]?.offsetHeight || window.innerHeight;
+        
+    // Salta o header/hero
+    sections.forEach((sec, i) => {
+      if(i === 0) return;
+      const btn = document.createElement('button');
+      btn.dataset.index = i;
+      btn.title = sec.id || 'Secção ' + i;
+      btn.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
+      scrollNav.append(btn);
+    });
+    
+    const updateScroll = () => {
+      const scrollPos = window.scrollY;
+      scrollNav.classList.toggle('show', scrollPos > heroHeight * 0.5);
+    
+      let current = 0;
+      sections.forEach((sec, i) => {
+        if(i === 0) return;
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2) current = i - 1;
+      });
+      document.querySelectorAll('.scroll-nav button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === current);
+      });
+    };
+    
+    addEventListener('scroll', updateScroll);
+    updateScroll();
+    </script>
+
+    <script>
+        addEventListener('DOMContentLoaded', () => {
+            const root = document.documentElement, ld = document.getElementById('ld');
+            const rm = matchMedia('(prefers-reduced-motion:reduce)').matches;
+            if (rm || !window.gsap || !window.ScrollTrigger) { root.classList.add('rm'); ld.classList.add('off'); return }
+            gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize: true });
+            const split = el => { const walk = n => [...n.childNodes].forEach(c => { if (c.nodeType === 3) { const f = document.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) { f.append(' '); return } const w = document.createElement('span'); w.className = 'w'; w.innerHTML = '<span>' + t + '</span>'; f.append(w) }); c.replaceWith(f) } else if (c.nodeType === 1) walk(c) }); walk(el) };
+            // smooth scroll
+            if (window.Lenis) {
+                const lenis = new Lenis({ duration: 1.1, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+                lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+                document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const h = a.getAttribute('href'), t = h.length > 1 && document.querySelector(h); if (t || h === '#top') { e.preventDefault(); lenis.scrollTo(t || 0) } }))
+            }
+            // marquee duplicate
+            const mt = document.querySelector('.mt'); mt.innerHTML += mt.innerHTML;
+            // hero masked scroll -> fade into content
+            gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: .6 } })
+                .to('#mt', { scale: 12, svgOrigin: '500 270', ease: 'power1.in', duration: 1 }, 0)
+                .to('.hcopy', { opacity: 0, y: -30, ease: 'none', duration: .2 }, 0)
+                .to('.ring', { opacity: 0, ease: 'none', duration: .3 }, 0)
+                .to('.mask', { opacity: 0, ease: 'none', duration: .35 }, .6)
+                .to('.sfade', { opacity: 1, ease: 'none', duration: .25 }, .75);
+            // text reveals (headings only) + small fades
+            document.querySelectorAll('[data-split]').forEach(el => { split(el); gsap.from(el.querySelectorAll('.w>span'), { yPercent: 115, duration: 1.1, ease: 'power4.out', stagger: .045, scrollTrigger: { trigger: el, start: 'top 85%', once: true } }) });
+            gsap.utils.toArray('[data-fade]').forEach(el => gsap.from(el, { y: 24, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } }));
+            // service cards
+            gsap.set('.card', { opacity: 0, y: 50 });
+            ScrollTrigger.batch('.card', { start: 'top 88%', once: true, onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: .12, clearProps: 'transform,opacity' }) });
+            // sticky process cards: previous card recedes as the next covers it
+            const sc = gsap.utils.toArray('.sc');
+            sc.forEach((c, i) => { if (i < sc.length - 1) gsap.to(c, { scale: .94, opacity: .55, ease: 'none', scrollTrigger: { trigger: sc[i + 1], start: 'top 75%', end: 'top 20%', scrub: true } }) });
+            // portfolio mask reveal
+            gsap.utils.toArray('.pj').forEach(p => {
+                const st = { trigger: p, start: 'top 82%', once: true };
+                gsap.fromTo(p.querySelector('.im'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'power4.inOut', scrollTrigger: st, clearProps: 'clipPath' });
+                gsap.from(p.querySelector('.art'), { scale: 1.3, duration: 1.8, ease: 'power3.out', scrollTrigger: st, clearProps: 'transform' })
+            });
+            // geometry + footer curtain
+            gsap.to('.ring2', { rotation: 120, ease: 'none', scrollTrigger: { trigger: '.cta', start: 'top bottom', end: 'bottom top', scrub: true } });
+            const ft = document.getElementById('ft'), sp = document.getElementById('sp'), setSp = () => sp.style.height = ft.offsetHeight + 'px';
+            setSp(); addEventListener('resize', () => { setSp(); ScrollTrigger.refresh() });
+            gsap.fromTo('.fi', { yPercent: -14, opacity: .15 }, { yPercent: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: sp, start: 'top bottom', end: 'bottom bottom', scrub: true } });
+            const place = () => { try { const b = document.getElementById('nm').getExtentOfChar(3); document.getElementById('ag').setAttribute('x', b.x + b.width / 2) } catch (e) { } }; place();
+            document.fonts && document.fonts.ready.then(() => { place(); setSp(); ScrollTrigger.refresh() });
+            // cursor
+            if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+                document.body.classList.add('cc');
+                const r = document.querySelector('.cur-ring'), d = document.querySelector('.cur-dot'); let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+                addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; d.style.transform = `translate3d(${x}px,${y}px,0)` });
+                gsap.ticker.add(() => { rx += (x - rx) * .18; ry += (y - ry) * .18; r.style.transform = `translate3d(${rx}px,${ry}px,0)` });
+                const on = (s, c) => document.querySelectorAll(s).forEach(el => { el.addEventListener('pointerenter', () => { r.classList.add(c); if (c === 'view') r.firstElementChild.textContent = el.dataset.cursor }); el.addEventListener('pointerleave', () => r.classList.remove(c)) });
+                on('a,button,.card', 'link'); on('[data-cursor]', 'view')
+            }
+            // loader + intro (single orchestrated entrance)
+            split(document.querySelector('.hcopy h1'));
+            let done = false; const go = () => {
+                if (done) return; done = true;
+                gsap.timeline({ onComplete: () => ld.classList.add('off') })
+                    .to('#ld i', { scaleX: 1, duration: .6, ease: 'power2.inOut' })
+                    .to(ld, { yPercent: -100, duration: .8, ease: 'power4.inOut' })
+                    .from('#mt', { opacity: 0, duration: 1.2, ease: 'power2.out' }, '-=.4')
+                    .from('.hcopy h1 .w>span', { yPercent: 115, duration: 1.1, ease: 'power4.out', stagger: .05 }, '-=.9')
+                    .from(['.hr p', '.btns', 'nav', '.ring'], { opacity: 0, y: 16, duration: 1, stagger: .1, ease: 'power3.out' }, '-=.8')
+            };
+            addEventListener('load', go); setTimeout(go, 3000); if (document.readyState === 'complete') go();
+        });
+    </script>
+</body>
+
+</html>
