@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0a1220">
     <meta property="og:title" content="NERO agency">
-    <meta property="og:description"
-        content="Websites à medida para negócios que querem crescer em Portugal."> <!--&#10;&#10;Conversão, performance e design premium.-->
+    <meta property="og:description" content="Websites à medida para negócios que querem crescer em Portugal.">
+    <!--&#10;&#10;Conversão, performance e design premium.-->
     <meta property="og:image" content="https://nero-agency.onrender.com/images/og-image.png">
     <!--<meta property="og:url" content="https://seu-dominio.com"> -->
     <meta property="og:type" content="website">
@@ -796,12 +796,145 @@
         }
 
         /* scroll indicator (bolinhas) */
-        .scroll-nav{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:1rem;opacity:0;transition:opacity .6s ease}
-        .scroll-nav.show{opacity:1}
-        .scroll-nav button{width:8px;height:8px;border:1.5px solid rgba(232,244,248,.3);border-radius:50%;background:transparent;cursor:pointer;transition:all .3s}
-        .scroll-nav button.active{background:var(--coral);border-color:var(--coral)}
-        .scroll-nav button:hover{border-color:rgba(232,244,248,.7)}
-        @media(max-width:960px){.scroll-nav{display:none}}
+        .scroll-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity .6s ease
+        }
+
+        .scroll-nav.show {
+            opacity: 1
+        }
+
+        .scroll-nav button {
+            width: 8px;
+            height: 8px;
+            border: 1.5px solid rgba(232, 244, 248, .3);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .scroll-nav button.active {
+            background: var(--coral);
+            border-color: var(--coral)
+        }
+
+        .scroll-nav button:hover {
+            border-color: rgba(232, 244, 248, .7)
+        }
+
+        @media(max-width:960px) {
+            .scroll-nav {
+                display: none
+            }
+        }
+
+        .cta-inner {
+            display: grid;
+            grid-template-columns: 0.7fr 1fr;
+            align-items: start;
+            width: 100%;
+            gap: 0;
+            transition: grid-template-columns .6s cubic-bezier(.22, 1, .36, 1), gap .6s
+        }
+
+        /* .cta-inner.open {
+            grid-template-columns: 0.71fr 1fr;
+            gap: 1.5rem
+        }*/
+
+        .cta-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem
+        }
+
+        .cta-form {
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(24px);
+            transition: opacity .5s .2s ease, transform .5s .2s ease;
+            max-width: 850px;
+
+        }
+
+        .cta-inner.open .cta-form {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            transition: opacity .5s .1s ease, transform .5s .1s ease, visibility 0s 0s;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            margin-bottom: 1.25rem
+        }
+
+        .field label {
+            font-size: .85rem;
+            color: var(--mut);
+            font-weight: 500;
+            letter-spacing: .05em
+        }
+
+        .field input,
+        .field textarea {
+            background: rgba(232, 244, 248, .06);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: .75rem 1rem;
+            color: var(--ice);
+            font: 1rem var(--sans);
+            outline: none;
+            transition: border-color .3s;
+            resize: none;
+            width: 100%
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--coral)
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: rgba(232, 244, 248, .3)
+        }
+
+        .form-note {
+            font-size: .82rem;
+            color: var(--mut);
+            margin-top: .75rem;
+            text-align: center
+        }
+
+        @media(max-width:760px) {
+
+            .cta-inner,
+            .cta-inner.open {
+                grid-template-columns: 1fr
+            }
+
+            .cta-form {
+                transform: translateY(24px)
+            }
+
+            .cta-inner.open .cta-form {
+                transform: none
+            }
+        }
     </style>
 </head>
 
@@ -836,7 +969,8 @@
                 <div class="hcopy">
                     <h1>Sites que convertem visitantes em clientes.</h1>
                     <div class="hr">
-                        <p>Web design à medida para estúdios de fitness e clínicas. Rápido, mensurável e sem templates.
+                        <p>Web design à medida para negócios que querem crescer. Rápido, mensurável e sem templates.
+
                         </p>
                         <div class="btns"><a class="btn fill" href="#contacto">Agendar discovery call</a><a class="btn"
                                 href="#trabalho">Ver trabalho</a></div>
@@ -857,17 +991,20 @@
             <div class="grid">
                 <article class="card">
                     <h3>Arranque</h3>
-                    <p>Uma landing page pensada para uma ação: marcar a aula experimental. Para estúdios novos, sempresença online.</p>
+                    <p>Uma landing page pensada para uma ação: marcar a aula experimental. Para estúdios novos,
+                        sempresença online.</p>
                     <!-- <span class="pr">Desde 450€ + 39€/mês</span> -->
                 </article>
                 <article class="card">
                     <h3>Presença</h3>
-                    <p>Website institucional multipágina, com gestão de conteúdos simples para publicar sozinho e serencontrado no Google.</p>
+                    <p>Website institucional multipágina, com gestão de conteúdos simples para publicar sozinho e
+                        serencontrado no Google.</p>
                     <!-- <span class="pr">Desde 1.200€ + 79€/mês</span> -->
                 </article>
                 <article class="card">
                     <h3>Gestão Total</h3>
-                    <p>Web app com área de membro, marcações com lista de espera e lembretes automáticos para reduzir faltas.</p>
+                    <p>Web app com área de membro, marcações com lista de espera e lembretes automáticos para reduzir
+                        faltas.</p>
                     <!-- <span class="pr">Desde 3.000€ + 199€/mês</span> -->
                 </article>
             </div>
@@ -881,25 +1018,29 @@
                 <article class="sc" style="--i:0;--c:#0f1b2e"><span class="big">01</span>
                     <div>
                         <h3>Conversa Estratégica</h3>
-                        <p>Uma videochamada honesta para perceber o vosso negócio. Depois, uma proposta clara: o que construímos, quando e quanto custa. Sem surpresas.</p>
+                        <p>Uma videochamada honesta para perceber o vosso negócio. Depois, uma proposta clara: o que
+                            construímos, quando e quanto custa. Sem surpresas.</p>
                     </div>
                 </article>
                 <article class="sc" style="--i:1;--c:#13233c"><span class="big">02</span>
                     <div>
                         <h3>Construção</h3>
-                        <p>Desenvolvemos passo a passo, com revisões em cada fase. Acompanham sem estar envolvidos — nós cuidamos do detalhe técnico enquanto vocês focam no negócio.</p>
+                        <p>Desenvolvemos passo a passo, com revisões em cada fase. Acompanham sem estar envolvidos — nós
+                            cuidamos do detalhe técnico enquanto vocês focam no negócio.</p>
                     </div>
                 </article>
                 <article class="sc" style="--i:2;--c:#182b49"><span class="big">03</span>
                     <div>
                         <h3>Lançamento</h3>
-                        <p>Tudo revisto antes de ir ao ar: velocidade, mobile, formulários, analytics. O vosso site sai pronto a converter, sem emergências.</p>
+                        <p>Tudo revisto antes de ir ao ar: velocidade, mobile, formulários, analytics. O vosso site sai
+                            pronto a converter, sem emergências.</p>
                     </div>
                 </article>
                 <article class="sc" style="--i:3;--c:#1d3254"><span class="big">04</span>
                     <div>
                         <h3>Lançamento e evolução</h3>
-                        <p>Não terminamos no lançamento. Fica ao vosso lado com atualizações, relatórios mensais e a certeza de que o site trabalha para o negócio, mês após mês.</p>
+                        <p>Não terminamos no lançamento. Fica ao vosso lado com atualizações, relatórios mensais e a
+                            certeza de que o site trabalha para o negócio, mês após mês.</p>
                     </div>
                 </article>
             </div>
@@ -907,7 +1048,7 @@
 
         <section id="trabalho">
             <h2 data-split>Trabalho selecionado.</h2>
-            <p class="note" data-fade>Conceitos que mostram o método. Os primeiros casos de estudo reais entram aqui.
+            <p class="note" data-fade>Exemplos do que construímos. Casos reais em breve.
             </p>
             <div class="pf">
                 <a class="pj" href="#contacto" data-cursor="Ver" style="--a:#e8f4f8;--b:#13233c">
@@ -954,19 +1095,58 @@
 
         <div class="mqs">
             <div class="mq" aria-hidden="true">
-                <div class="mt"><span>Estúdios de fitness</span><span>Clínicas</span><span>Landing pages</span><span>Web
-                        apps</span><span>Design à medida</span><span>Performance</span><span>SEO</span></div>
+                <div class="mt">
+                    <span>Crescimento Digital</span>
+                    <span>Otimizar Conversões</span>
+                    <span>Estratégia Web</span>
+                    <span>UX/UI Design</span>
+                    <span>Vendas Online</span>
+                    <span>Presença Digital</span>
+                    <span>Landing pages</span>
+                    <span>Web apps</span>
+                </div>
             </div>
         </div>
 
-        <section class="cta" id="contacto"><svg class="ring2" viewBox="0 0 100 100" aria-hidden="true">
+        <section class="cta" id="contacto">
+            <svg class="ring2" viewBox="0 0 100 100" aria-hidden="true">
                 <circle cx="50" cy="50" r="49" fill="none" stroke="#ff6b4a" stroke-width=".25" />
                 <circle cx="50" cy="50" r="36" fill="none" stroke="#e8f4f8" stroke-width=".2" stroke-dasharray="1 2" />
                 <circle cx="50" cy="1" r="1.2" fill="#ff6b4a" />
             </svg>
-            <h2 data-split>Vamos conversar sobre o seu projeto?</h2>
-            <p data-fade>Uma videochamada de discovery, sem compromisso. Mapeamos o seu contexto antes de propor seja o
-                que for.</p><a class="btn fill" href="mailto:ola@agencia.pt">Marcar discovery call</a>
+
+            <div class="cta-inner">
+                <div class="cta-copy">
+                    <h2 data-split>Vamos conversar sobre o seu projeto?</h2>
+                    <p data-fade>Uma videochamada de discovery, sem compromisso. Mapeamos o vosso contexto antes de
+                        propor seja o que for.</p>
+                    <button class="btn fill" id="ctaBtn">Marcar discovery call</button>
+                </div>
+
+                <div class="cta-form" id="ctaForm">
+                    <form id="discoveryForm">
+                        <div class="field">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" placeholder="O seu nome" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="email@empresa.pt" required>
+                        </div>
+                        <div class="field">
+                            <label for="empresa">Empresa / Negócio</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Nome do negócio">
+                        </div>
+                        <div class="field">
+                            <label for="mensagem">O que precisa?</label>
+                            <textarea id="mensagem" name="mensagem" rows="3"
+                                placeholder="Conte-nos brevemente o que procura..."></textarea>
+                        </div>
+                        <button type="submit" class="btn fill" style="width:100%">Enviar pedido</button>
+                        <p class="form-note">Respondemos em menos de 24 horas.</p>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
     <div id="sp"></div>
@@ -975,7 +1155,7 @@
             <div class="fg">
                 <div>
                     <!-- <a class="logo" href="#top">agência <b>.</b></a> -->
-                    <a class="logo nero"href="#top">NERO</a>
+                    <a class="logo nero" href="#top">NERO</a>
                     <p>Web design à medida de negócios que querem crescer em Portugal.</p>
                 </div>
                 <div>
@@ -984,11 +1164,10 @@
                 </div>
                 <div>
                     <h4>Contacto</h4>
-                    <a class="ul"
-                        href="mailto:nero.agency.info@gmail.com">nero.agency.info@gmail.com</a>
+                    <a class="ul" href="mailto:nero.agency.info@gmail.com">nero.agency.info@gmail.com</a>
                     <!-- <a class="ul"href="#">LinkedIn</a> -->
-                    <a class="ul" 
-                        href="https://www.instagram.com/nero.agency_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a class="ul" href="https://www.instagram.com/nero.agency_/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
                 </div>
             </div>
             <div class="fb"><span>© 2026 Portugal</span><a class="ul" href="#top">Voltar ao topo</a></div>
@@ -997,37 +1176,37 @@
 
     <!-- Script da scroll das bolinhas-->
     <script>
-    const sections = document.querySelectorAll('section, header');
-    const scrollNav = document.getElementById('scrollNav');
-    const heroHeight = sections[0]?.offsetHeight || window.innerHeight;
-        
-    // Salta o header/hero
-    sections.forEach((sec, i) => {
-      if(i === 0) return;
-      const btn = document.createElement('button');
-      btn.dataset.index = i;
-      btn.title = sec.id || 'Secção ' + i;
-      btn.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
-      scrollNav.append(btn);
-    });
-    
-    const updateScroll = () => {
-      const scrollPos = window.scrollY;
-      scrollNav.classList.toggle('show', scrollPos > heroHeight * 0.5);
-    
-      let current = 0;
-      sections.forEach((sec, i) => {
-        if(i === 0) return;
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight / 2) current = i - 1;
-      });
-      document.querySelectorAll('.scroll-nav button').forEach((btn, i) => {
-        btn.classList.toggle('active', i === current);
-      });
-    };
-    
-    addEventListener('scroll', updateScroll);
-    updateScroll();
+        const sections = document.querySelectorAll('section, header');
+        const scrollNav = document.getElementById('scrollNav');
+        const heroHeight = sections[0]?.offsetHeight || window.innerHeight;
+
+        // Salta o header/hero
+        sections.forEach((sec, i) => {
+            if (i === 0) return;
+            const btn = document.createElement('button');
+            btn.dataset.index = i;
+            btn.title = sec.id || 'Secção ' + i;
+            btn.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
+            scrollNav.append(btn);
+        });
+
+        const updateScroll = () => {
+            const scrollPos = window.scrollY;
+            scrollNav.classList.toggle('show', scrollPos > heroHeight * 0.5);
+
+            let current = 0;
+            sections.forEach((sec, i) => {
+                if (i === 0) return;
+                const rect = sec.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2) current = i - 1;
+            });
+            document.querySelectorAll('.scroll-nav button').forEach((btn, i) => {
+                btn.classList.toggle('active', i === current);
+            });
+        };
+
+        addEventListener('scroll', updateScroll);
+        updateScroll();
     </script>
 
     <script>
@@ -1095,6 +1274,31 @@
                     .from(['.hr p', '.btns', 'nav', '.ring'], { opacity: 0, y: 16, duration: 1, stagger: .1, ease: 'power3.out' }, '-=.8')
             };
             addEventListener('load', go); setTimeout(go, 3000); if (document.readyState === 'complete') go();
+        });
+    </script>
+
+    <!-- Script form de contacto-->
+    <script>
+        const ctaBtn = document.getElementById('ctaBtn');
+        const ctaForm = document.getElementById('ctaForm');
+        const ctaInner = document.querySelector('.cta-inner');
+
+        ctaBtn.addEventListener('click', () => {
+            ctaInner.classList.toggle('open');
+            if (ctaInner.classList.contains('open')) {
+                ctaForm.querySelector('input').focus();
+                ctaBtn.textContent = 'Fechar';
+            } else {
+                ctaBtn.textContent = 'Marcar discovery call';
+            }
+        });
+
+        document.getElementById('discoveryForm').addEventListener('submit', e => {
+            e.preventDefault();
+            ctaBtn.textContent = 'Marcar discovery call';
+            ctaInner.classList.remove('open');
+            // Aqui ligares ao teu serviço de email (Formspree, EmailJS, etc.)
+            alert('Pedido enviado! Respondemos em menos de 24 horas.');
         });
     </script>
 </body>
