@@ -1,17 +1,31 @@
 {
-  "name": "Nero Agency",
+  "name": "nero-agency",
   "version": "1.0.0",
-  "description": "Professional landing page",
+  "description": "NERO Agency — Web design à medida para negócios em Portugal",
+  "homepage": "https://neroagency.pt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nero-agency/Nero-Agency-Landing-Page"
+  },
+  "bugs": {
+    "url": "https://github.com/nero-agency/Nero-Agency-Landing-Page"
+  },
   "scripts": {
     "dev": "live-server public",
+    "start": "live-server public",
     "build": "npm run minify",
     "minify": "echo 'Add your build tool here'"
   },
-  "keywords": [],
+  "keywords": [
+    "web design",
+    "portugal",
+    "landing page",
+    "desenvolvimento web",
+    "design digital"
+  ],
   "author": "Bernardo",
   "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.1"
   }
 }
-
