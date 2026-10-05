@@ -64,6 +64,7 @@ document.getElementById('discoveryForm').addEventListener('submit', async e => {
 
     const form = e.target;
     const formData = new FormData(form);
+    formData.append("access_key", "cbd19f38-9278-4482-bc4e-e585ff5ef948");
 
     const btnOriginal = ctaBtn.textContent;
     ctaBtn.textContent = 'Enviando...';
