@@ -59,6 +59,29 @@ ctaBtn.addEventListener('click', () => {
     }
 });
 
+// Helper function para mostrar popup
+function showPopup(message, type = 'success') {
+    const popup = document.getElementById('popup');
+    const popupContent = popup.querySelector('.popup-content');
+    const popupMessage = document.getElementById('popupMessage');
+
+    popupMessage.textContent = message;
+    popupContent.className = 'popup-content ' + type;
+    popup.classList.add('show');
+
+    setTimeout(() => {
+        popup.classList.remove('show');
+    }, 4000);
+}
+
+// Função para testar popup sem submeter
+function testPopup(type = 'success') {
+    const message = type === 'success' 
+        ? 'Pedido enviado! Respondemos em menos de 24 horas.'
+        : 'Erro ao enviar. Tenta novamente.';
+    showPopup(message, type);
+}
+
 document.getElementById('discoveryForm').addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -93,25 +116,3 @@ document.getElementById('discoveryForm').addEventListener('submit', async e => {
     }
 });
 
-// Helper function para mostrar popup
-function showPopup(message, type = 'success') {
-    const popup = document.getElementById('popup');
-    const popupContent = popup.querySelector('.popup-content');
-    const popupMessage = document.getElementById('popupMessage');
-
-    popupMessage.textContent = message;
-    popupContent.className = 'popup-content ' + type;
-    popup.classList.add('show');
-
-    setTimeout(() => {
-        popup.classList.remove('show');
-    }, 4000);
-}
-
-// Função para testar popup sem submeter
-function testPopup(type = 'success') {
-    const message = type === 'success' 
-        ? 'Pedido enviado! Respondemos em menos de 24 horas.'
-        : 'Erro ao enviar. Tenta novamente.';
-    showPopup(message, type);
-}
