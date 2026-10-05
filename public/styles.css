@@ -950,3 +950,44 @@ footer {
         transform: none
     }
 }
+
+/* Popup customizado */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+}
+
+.popup.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup-content {
+    background: var(--navy);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+
+.popup-content p {
+    color: var(--ice);
+    max-width: none;
+    font-size: 1rem;
+}
+
+.popup-content.success p {
+    color: #4ade80;
+}
+
+.popup-content.error p {
+    color: var(--coral);
+}

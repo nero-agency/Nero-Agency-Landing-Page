@@ -76,23 +76,42 @@ document.getElementById('discoveryForm').addEventListener('submit', async e => {
         });
 
         const data = await response.json();
-        console.log('Response:', response);
-        console.log('Data:', data);
 
         if (response.ok) {
             ctaBtn.textContent = 'Marcar discovery call';
             ctaInner.classList.remove('open');
             form.reset();
-            alert('Pedido enviado! Respondemos em menos de 24 horas.');
+            showPopup('Pedido enviado! Respondemos em menos de 24 horas.', 'success');
         } else {
-            console.error('Erro:', data.message);
-            alert('Erro ao enviar: ' + (data.message || 'Tenta novamente.'));
+            showPopup('Erro ao enviar. Tenta novamente.', 'error');
         }
     } catch (error) {
-        console.error('Erro completo:', error);
-        alert('Algo correu mal. Tenta novamente.');
+        showPopup('Algo correu mal. Tenta novamente.', 'error');
     } finally {
         ctaBtn.textContent = btnOriginal;
         ctaBtn.disabled = false;
     }
 });
+
+// Helper function para mostrar popup
+function showPopup(message, type = 'success') {
+    const popup = document.getElementById('popup');
+    const popupContent = popup.querySelector('.popup-content');
+    const popupMessage = document.getElementById('popupMessage');
+
+    popupMessage.textContent = message;
+    popupContent.className = 'popup-content ' + type;
+    popup.classList.add('show');
+
+    setTimeout(() => {
+        popup.classList.remove('show');
+    }, 4000);
+}
+
+// Função para testar popup sem submeter
+function testPopup(type = 'success') {
+    const message = type === 'success' 
+        ? 'Pedido enviado! Respondemos em menos de 24 horas.'
+        : 'Erro ao enviar. Tenta novamente.';
+    showPopup(message, type);
+}
