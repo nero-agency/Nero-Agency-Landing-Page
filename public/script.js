@@ -59,10 +59,37 @@ ctaBtn.addEventListener('click', () => {
     }
 });
 
-document.getElementById('discoveryForm').addEventListener('submit', e => {
+document.getElementById('discoveryForm').addEventListener('submit', async e => {
     e.preventDefault();
-    ctaBtn.textContent = 'Marcar discovery call';
-    ctaInner.classList.remove('open');
-    // TODO: ligar ao Formspree ou EmailJS
-    alert('Pedido enviado! Respondemos em menos de 24 horas.');
+
+    const form = e.target;
+    const formData = new FormData(form);
+    formData.append("access_key", "cbd19f38-9278-4482-bc4e-e585ff5ef948");
+
+    const btnOriginal = ctaBtn.textContent;
+    ctaBtn.textContent = 'Enviando...';
+    ctaBtn.disabled = true;
+
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            ctaBtn.textContent = 'Marcar discovery call';
+            ctaInner.classList.remove('open');
+            form.reset();
+            alert('Pedido enviado! Respondemos em menos de 24 horas.');
+        } else {
+            alert('Erro ao enviar. Tenta novamente.');
+        }
+    } catch (error) {
+        alert('Algo correu mal. Tenta novamente.');
+    } finally {
+        ctaBtn.textContent = btnOriginal;
+        ctaBtn.disabled = false;
+    }
 });
