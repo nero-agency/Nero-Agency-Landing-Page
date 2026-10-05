@@ -64,7 +64,6 @@ document.getElementById('discoveryForm').addEventListener('submit', async e => {
 
     const form = e.target;
     const formData = new FormData(form);
-    formData.append("access_key", "cbd19f38-9278-4482-bc4e-e585ff5ef948");
 
     const btnOriginal = ctaBtn.textContent;
     ctaBtn.textContent = 'Enviando...';
@@ -77,6 +76,8 @@ document.getElementById('discoveryForm').addEventListener('submit', async e => {
         });
 
         const data = await response.json();
+        console.log('Response:', response);
+        console.log('Data:', data);
 
         if (response.ok) {
             ctaBtn.textContent = 'Marcar discovery call';
@@ -84,9 +85,11 @@ document.getElementById('discoveryForm').addEventListener('submit', async e => {
             form.reset();
             alert('Pedido enviado! Respondemos em menos de 24 horas.');
         } else {
-            alert('Erro ao enviar. Tenta novamente.');
+            console.error('Erro:', data.message);
+            alert('Erro ao enviar: ' + (data.message || 'Tenta novamente.'));
         }
     } catch (error) {
+        console.error('Erro completo:', error);
         alert('Algo correu mal. Tenta novamente.');
     } finally {
         ctaBtn.textContent = btnOriginal;
